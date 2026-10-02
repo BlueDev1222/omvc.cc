@@ -1,0 +1,4 @@
+const toggle=document.querySelector('.menu-toggle');
+toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));document.querySelector('#navigation').classList.toggle('open',open)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&toggle?.getAttribute('aria-expanded')==='true'){toggle.setAttribute('aria-expanded','false');document.querySelector('#navigation').classList.remove('open');toggle.focus()}});
+document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const status=document.querySelector('.copy-status');try{await navigator.clipboard.writeText(button.dataset.copy);status.textContent='Join code copied.';button.textContent='Copied ✓'}catch{status.textContent='Copy this join code: '+button.dataset.copy}}));
